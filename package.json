@@ -1,0 +1,32 @@
+{
+    "name": "moi",
+    "version": "0.1.0",
+    "description": "A simple utility library for MOI Protocol",
+    "main": "dist/index.js",
+    "bin": {
+        "moi": "dist/index.js"
+    },
+    "scripts": {
+        "link:local": "pnpm link .",
+        "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js",
+        "watch": "(pnpm link . || true) && esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --watch",
+        "cm": "cz"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "typescript": "^5.3.3"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.16",
+        "commitizen": "^4.3.0",
+        "cz-conventional-changelog": "^3.3.0",
+        "esbuild": "^0.20.0"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    }
+}
