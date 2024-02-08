@@ -1,8 +1,11 @@
 {
-    "name": "moi",
-    "version": "0.1.0",
+    "name": "moiutil",
+    "version": "0.0.0-development",
     "description": "A simple utility library for MOI Protocol",
     "main": "dist/index.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
     "bin": {
         "moi": "dist/index.js"
     },
@@ -10,11 +13,18 @@
         "link:local": "pnpm link .",
         "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js",
         "watch": "(pnpm link . || true) && esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --watch",
-        "cm": "cz"
+        "cm": "cz",
+        "semantic-release": "semantic-release --branches main"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/harshrastogiexe/moi-cli.git"
+    },
     "dependencies": {
         "typescript": "^5.3.3"
     },
@@ -22,11 +32,7 @@
         "@types/node": "^20.11.16",
         "commitizen": "^4.3.0",
         "cz-conventional-changelog": "^3.3.0",
-        "esbuild": "^0.20.0"
-    },
-    "config": {
-        "commitizen": {
-            "path": "./node_modules/cz-conventional-changelog"
-        }
+        "esbuild": "^0.20.0",
+        "semantic-release": "^23.0.2"
     }
 }
