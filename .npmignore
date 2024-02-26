@@ -1,1 +1,9 @@
-/src
+src
+.github
+lib
+test
+.editorconfig
+.eslintrc
+.prettierrc
+vitest.config.mts
+.releaserc

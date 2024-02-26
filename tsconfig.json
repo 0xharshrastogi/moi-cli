@@ -1,8 +1,8 @@
 {
+    "include": ["src/**/*", "lib/**/*", "test/**/*"],
     "compilerOptions": {
         "lib": ["es2023"],
-        "module": "node16",
-        "target": "es2022",
+        "module": "ES2022",
 
         "outDir": "dist",
         "strict": true,
@@ -10,6 +10,13 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "node16"
+        "moduleResolution": "Bundler",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "@/cmd/*": ["src/cmd/"],
+            "@/lib/*": ["lib/*"],
+            "@/run/*": ["src/handlers/*"]
+        }
     }
 }
