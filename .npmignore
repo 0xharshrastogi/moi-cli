@@ -6,3 +6,4 @@ test
 .eslintrc
 .prettierrc
 vitest.config.mts
+.releaserc

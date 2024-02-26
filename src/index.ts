@@ -4,7 +4,7 @@ import { program } from "commander";
 
 import { getPackageVersion } from "@/lib/utils";
 
-import { account } from "./cmd";
+import { account, asset, logic } from "./cmd";
 
 program
     .name("moi")
@@ -12,9 +12,8 @@ program
     .version(getPackageVersion(), "-v, --version", "Output the current version.");
 
 // Commands
-program.option("-n, --network <network>", "Set the network to use", "mainnet");
-
-program.opts();
 program.addCommand(account);
+program.addCommand(asset);
+program.addCommand(logic);
 
 program.parse(process.argv);

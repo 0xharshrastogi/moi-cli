@@ -2,20 +2,44 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
-import { expect, test } from "vitest";
+import { Wallet } from "js-moi-sdk";
+import { afterEach, beforeEach, describe, expect, test } from "vitest";
 
-import { isAccountSetup } from "@/lib/moi";
+import { exportWalletToFile, importWalletFromFile, isAccountSetup } from "@/lib/moi";
+import { isFileExist } from "@/lib/utils/file";
 
-const filename = path.resolve(os.homedir(), ".moi", "cli-keystore.json");
+describe("lib/moi/wallet.ts", () => {
+    let filePath: string;
+    let address: string;
 
-test(isAccountSetup.name, async () => {
-    const isFileExist = async () => {
-        try {
-            await fs.access(filename);
-            return true;
-        } catch (error) {
-            return false;
-        }
-    };
-    expect(await isAccountSetup()).toBe(await isFileExist());
+    beforeEach(async () => {
+        const filename = "cli-keystore-" + Date.now() + ".json";
+
+        const wallet = new Wallet();
+        await wallet.createRandom();
+
+        filePath = path.resolve(os.tmpdir(), filename);
+        await exportWalletToFile(wallet, "password", { filePath });
+
+        address = wallet.getAddress();
+    });
+
+    test("isAccountSetup", async () => {
+        const [expected, actual] = await Promise.all([isFileExist(filePath), isAccountSetup()]);
+
+        expect(actual).toBe(expected);
+    });
+
+    test("exportWalletToFile", async () => {
+        expect(await isFileExist(filePath)).toBeTruthy();
+    });
+
+    test("importWalletFromFile", async () => {
+        const wallet = await importWalletFromFile("password", { filePath });
+        expect(wallet.getAddress()).toBe(address);
+    });
+
+    afterEach(async () => {
+        await fs.rm(filePath, { force: true });
+    });
 });
