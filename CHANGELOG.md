@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/harshrastogiexe/moi-cli/compare/v1.1.0...v1.1.1) (2024-02-26)
+
+
+### Bug Fixes
+
+* **package:** rename pkg name ([fae6169](https://github.com/harshrastogiexe/moi-cli/commit/fae61697d2682ebb2217d9876f33f4d5a9791940))
+
 # [1.1.0](https://github.com/harshrastogiexe/moi-cli/compare/v1.0.0...v1.1.0) (2024-02-26)
 
 
