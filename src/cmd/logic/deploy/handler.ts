@@ -1,3 +1,6 @@
+import { resolve } from "node:path";
+import { cwd } from "node:process";
+
 import type { Command } from "commander";
 import { CustomError, type LogicManifest } from "js-moi-sdk";
 
@@ -17,6 +20,8 @@ interface ICmdOption {
 export const deployLogic = async (option: ICmdOption, cmd: Command) => {
     const spinner = createSpinner();
     try {
+        const manifestFilepath = resolve(cwd(), option.file);
+        console.log("Deploying logic from file", manifestFilepath);
         if (!isJsonExtension(option.file)) {
             console.error(`Invalid file. File must have a manifest JSON.`);
             process.exit(1);

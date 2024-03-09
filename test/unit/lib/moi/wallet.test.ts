@@ -15,8 +15,7 @@ describe("lib/moi/wallet.ts", () => {
     beforeEach(async () => {
         const filename = "cli-keystore-" + Date.now() + ".json";
 
-        const wallet = new Wallet();
-        await wallet.createRandom();
+        const wallet = await Wallet.createRandom();
 
         filePath = path.resolve(os.tmpdir(), filename);
         await exportWalletToFile(wallet, "password", { filePath });

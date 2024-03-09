@@ -11,8 +11,7 @@ export const setup = async () => {
 
     const mnemonic = params.method === "create" ? generateMnemonic() : params.mnemonic;
 
-    const wallet = new Wallet();
-    await wallet.fromMnemonic(mnemonic, params.path);
+    const wallet = await Wallet.fromMnemonic(mnemonic, params.path);
     await exportWalletToFile(wallet, params.password);
 };
 

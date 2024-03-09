@@ -32,11 +32,9 @@ export const importWalletFromFile = async (key: string, options?: { filePath: st
 
     const filePath = options?.filePath ?? getFilePath();
     const blob = await fs.readFile(filePath, "utf-8");
-    const wallet = new Wallet();
-
-    wallet.fromKeystore(blob, key);
-    return wallet;
+    return Wallet.fromKeystore(blob, key);
 };
+
 export const isAccountSetup = async () => {
     const filePath = getFilePath();
     return await isFileExist(filePath);
