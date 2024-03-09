@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/harshrastogiexe/moi-cli/compare/v1.1.1...v1.1.2) (2024-03-09)
+
+
+### Bug Fixes
+
+* **cmd:** logic deployment bug ([94d3f3d](https://github.com/harshrastogiexe/moi-cli/commit/94d3f3dc31c7f9c46acf577c3cf7732b5de541be))
+
 ## [1.1.1](https://github.com/harshrastogiexe/moi-cli/compare/v1.1.0...v1.1.1) (2024-02-26)
 
 
