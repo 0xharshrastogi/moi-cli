@@ -9,6 +9,7 @@ import fs from "node:fs/promises";
 export const isJsonExtension = (filePath: string) => filePath.endsWith(".json");
 
 export const loadJSONFile = async (filePath: string) => {
+    console.log("Loading JSON file", filePath);
     const blob = await fs.readFile(filePath, "utf-8");
 
     return JSON.parse(blob);
